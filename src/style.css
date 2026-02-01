@@ -1,0 +1,54 @@
+* { box-sizing: border-box; }
+:root { --bg: #ffffff; --card: #ffffff; --muted: #6b7280; --accent: #2563eb; --surface: #f3f4f6; --text: #111827 }
+body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg,#f8fafc 0%, #ffffff 100%); color:var(--text) }
+
+/* Landing */
+.landing { display:flex; align-items:center; justify-content:center; height:100%; padding: 28px; }
+.card { width: 100%; max-width: 760px; border-radius: 12px; padding: 32px; box-shadow: 0 10px 30px rgba(2,6,23,0.08); text-align:center; background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(250,250,255,0.7)); }
+.card h1 { margin: 0 0 10px 0; font-size: 28px; letter-spacing: -0.02em }
+.card p { color:var(--muted); margin-top:8px }
+.actions { margin: 18px 0 }
+.btn { background:var(--accent); color:#fff; padding: 10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:600 }
+.btn:disabled { opacity: 0.6; cursor: not-allowed }
+.open { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:8px }
+.open input { padding: 10px 12px; width: 320px; max-width: 60%; border: 1px solid #e6e9ee; border-radius:8px }
+.note { margin-top:14px; color:var(--muted) }
+
+/* Editor Layout */
+.editor-grid { display:flex; flex-direction:column; height:100vh }
+.top-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 12px 18px; border-bottom: 1px solid rgba(0,0,0,0.04); background: rgba(255,255,255,0.6) }
+.left-top { display:flex; align-items:center; gap:12px }
+.doc-id code { background:var(--surface); padding:6px 10px; border-radius:8px }
+.toolbar { display:flex; gap:8px; align-items:center }
+.btn.small { padding:8px 10px; font-size:13px; border-radius:8px }
+.right-top { display:flex; align-items:center; gap:10px }
+.badge { background:var(--surface); padding:6px 10px; border-radius:10px; font-size:13px }
+.dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px }
+.dot.green { background: #10b981 }
+.dot.red { background: #ef4444 }
+.save-indicator { font-size:13px; color:var(--muted) }
+.top-actions { display:flex; gap:8px; align-items:center }
+
+.editor-area { display:grid; grid-template-columns: 1fr 1fr; gap:12px; padding: 16px; flex:1; min-height:0 }
+.editor { width:100%; border: 1px solid #e6e9ee; border-radius:10px; padding: 16px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace; font-size: 14px; resize: none; height:100%; min-height: 300px }
+.preview { width:100%; border-radius:10px; background: #fff; border:1px solid #e6e9ee; padding:18px; overflow:auto; }
+.preview h1 { font-size:20px }
+.preview img { max-width:100%; border-radius:6px }
+
+/* Dark theme */
+.editor-grid.dark { --bg: #0b1220; --card: #0f1724; --muted: #9ca3af; --accent: #2563eb; --surface: #111827; --text: #e6eef8; background: linear-gradient(180deg,#071226 0%, #081426 100%); }
+.editor-grid.dark .top-bar { background: rgba(0,0,0,0.25) }
+.editor-grid.dark .editor, .editor-grid.dark .preview { background: #071127; border-color: rgba(255,255,255,0.04); color:var(--text) }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .editor-area { grid-template-columns: 1fr; }
+  .preview { order: 2 }
+}
+
+@media (max-width: 600px) {
+  .open { flex-direction: column }
+  .open input { width: 100%; max-width: 100% }
+  .card { padding: 20px }
+}
+
